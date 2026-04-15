@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment android:id="@+id/homeFragment"
+        android:name="com.example.vatska.HomeFragment"
+        android:label="Home"/>
+    <fragment android:id="@+id/ordersFragment"
+        android:name="com.example.vatska.OrdersFragment"
+        android:label="Orders"/>
+    <fragment android:id="@+id/createOrderFragment"
+        android:name="com.example.vatska.CreateOrderFragment"
+        android:label="Create Order"/>
+    <fragment android:id="@+id/expensesFragment"
+        android:name="com.example.vatska.ExpensesFragment"
+        android:label="Expenses"/>
+    <fragment android:id="@+id/profileFragment"
+        android:name="com.example.vatska.ProfileFragment"
+        android:label="Profile"/>
+</navigation>
