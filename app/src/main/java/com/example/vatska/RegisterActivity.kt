@@ -1,5 +1,6 @@
 package com.example.vatska
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -14,14 +15,29 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnSignUp.setOnClickListener {
-            val intent = Intent(this, HomeActivity::class.java)
-            intent.putExtra("USER_EMAIL", binding.etEmail.text.toString())
-            startActivity(intent)
-            finish()
+            val name = binding.etName.text.toString()
+            val email = binding.etEmail.text.toString()
+
+            if (name.isNotEmpty() && email.isNotEmpty()) {
+                // SAVE to SharedPreferences
+                val prefs = getSharedPreferences("VatskaPrefs", Context.MODE_PRIVATE)
+                prefs.edit()
+                    .putBoolean("isLoggedIn", true)
+                    .putString("userEmail", email)
+                    .putString("userName", name)
+                    .apply()
+
+                val intent = Intent(this, HomeActivity::class.java)
+                intent.putExtra("USER_EMAIL", email)
+                startActivity(intent)
+                finish()
+            } else {
+                binding.etName.error = "Please enter your name"
+            }
         }
 
         binding.btnGoToLogin.setOnClickListener {
-            finish() // go back to Login
+            finish()
         }
     }
 }
